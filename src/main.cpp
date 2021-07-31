@@ -14,6 +14,7 @@
 #include "Window.h"
 #include "Scene.h"
 #include "StartingScene.h"
+#include "StencilScene.h"
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
@@ -24,7 +25,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(10.0f, 0.0f, 13.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -50,13 +51,11 @@ int main() {
 
 
 	//stbi_set_flip_vertically_on_load(true);
-	
-	// configure global opengl state
-	// -----------------------------
-	glEnable(GL_DEPTH_TEST);
+
 
 	// build and compile our shader 
-	StartingScene scene;
+	//StartingScene scene;
+	StencilScene scene;
 	scene.init();
 	while (win.isOpened()) {
 
@@ -66,43 +65,8 @@ int main() {
 
 		//rendering
 		//------
-		//clear color and depth
-		glClearColor(0.2, 0.3, 0.3, 1);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		
 
-		// ourShader.use();
-		// ourShader.setV3Float("dirLight.direction", -0.2f, -1.0f, -0.3f);
-		// ourShader.setV3Float("dirLight.ambient", 0.2f, 0.2f, 0.2f);
-		// ourShader.setV3Float("dirLight.diffuse", 0.5f, 0.5f, 0.5f);
-		// ourShader.setV3Float("dirLight.specular", 1.0f,0.0f, 1.0f);
-		
-		// ourShader.setV3Float("viewPos", camera.Position); 
-		// //Projection matrix
- 		// glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        // ourShader.setMat4("projection", projection);
-		// // camera/view transformation
-        // glm::mat4 view = camera.GetViewMatrix();
-        // ourShader.setMat4("view", view);
-
-		// glm::mat4 model = glm::mat4(1.0f);
-		// model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); 
-        // model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
-		
-		// model = glm::rotate(model, glm::radians(20.0f)*win.getDeltaTime()*0.5f, glm::vec3(0, 1.0f, 0));
-		
-        // ourShader.setMat4("model", model);
-        // backpack.Draw(ourShader);
-		// int i =1;
-		// for (auto x : boxPositions)
-		// {
-		// 	model = glm::mat4(1.0f);
-		// 	model = glm::translate(model, x);
-		// 	float angle = 20.0f *i;
-		// 	model = glm::rotate(model, glm::radians(angle)*(float)glfwGetTime()*0.5f, glm::vec3(1.0f, 0.3f*i, 0.5f));
-  		// 	ourShader.setMat4("model", model);
-		// 	box.Draw(ourShader);
-		// 	i++;
-		// }
 		scene.draw(camera, win);
 
      
