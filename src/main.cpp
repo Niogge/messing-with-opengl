@@ -15,6 +15,7 @@
 #include "Scene.h"
 #include "StartingScene.h"
 #include "StencilScene.h"
+#include "BlendingScene.h"
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
@@ -55,7 +56,8 @@ int main() {
 
 	// build and compile our shader 
 	//StartingScene scene;
-	StencilScene scene;
+	//StencilScene scene;
+	BlendingScene scene;
 	scene.init();
 	while (win.isOpened()) {
 
