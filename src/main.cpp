@@ -17,6 +17,9 @@
 #include "StencilScene.h"
 #include "BlendingScene.h"
 #include "FramebufferScene.h"
+#include "CubemapScene.h"
+
+
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
@@ -59,7 +62,8 @@ int main() {
 	//StartingScene scene;
 	//StencilScene scene;
 	//BlendingScene scene;
-	FramebufferScene scene;
+	//FramebufferScene scene;
+	CubemapScene scene;
 	scene.init();
 	while (win.isOpened()) {
 
